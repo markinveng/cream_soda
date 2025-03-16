@@ -1,0 +1,26 @@
+# node
+node_modules/
+
+# ビルド成果物
+dist/
+build/
+
+# ログファイル
+*.log
+
+# OSやエディタ固有のファイル
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 静的アセットのキャッシュや一時ファイル
+static/**/*.tmp
+static/**/*.bak
+
+# モデルの中間ファイル（必要に応じて）
+static/models/**/*.blend1
+static/models/**/*.blend2
+
+# 環境設定ファイル（必要に応じて）
+.env
