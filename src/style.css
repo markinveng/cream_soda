@@ -99,14 +99,6 @@ body {
     .content .blueHawaii_text,
     .content .sakura_text {
       font-size: 2rem; }
-  .content .melon {
-    background: #57c882; }
-  .content .grape {
-    background: #7d3cff; }
-  .content .blueHawaii {
-    background: #00aaff; }
-  .content .sakura {
-    background: #ffb7c5; }
 
 @media (max-width: 768px) {
   .content section {

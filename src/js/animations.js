@@ -15,6 +15,15 @@ export function setupAnimations(scene, camera, renderer, model) {
     return;
   }
 
+  // **背景色を変化させるセクションカラー**
+  const sectionColors = [
+    [255, 183, 197], // Sakura
+    [87, 200, 130],  // Melon
+    [125, 60, 255],  // Grape
+    [0, 170, 255],   // Blue Hawaii
+    [255, 183, 197], // Sakura（最後は最初の色とループ）
+  ];
+
   // **モデルの初期角度とサイズを設定**
   model.rotation.set(0, THREE.MathUtils.degToRad(30), 0);
   model.scale.set(0.6, 0.6, 0.6);
@@ -33,17 +42,29 @@ export function setupAnimations(scene, camera, renderer, model) {
     // **スクロール位置に応じて `X` を更新**
     const scrollY = window.scrollY || window.pageYOffset;
     const sectionHeight = window.innerHeight;
-    const cycleIndex = Math.floor(scrollY / sectionHeight) % 2; // **0: 右 → 左, 1: 左 → 右**
+    const totalSections = sectionColors.length - 1;
+    const currentSection = Math.floor(scrollY / sectionHeight) % totalSections;
+    const nextSection = (currentSection + 1) % totalSections;
 
-    // **スクロール量を 0 〜 1 に正規化**
+    // **現在のスクロール位置を 0 〜 1 に正規化**
     const normalizedScroll = (scrollY % sectionHeight) / sectionHeight;
 
-    // **スクロールの進行度に応じて徐々に移動**
-    if (cycleIndex === 0) {
+    // **モデルの移動ロジック**
+    if (currentSection % 2 === 0) {
       model.position.x = THREE.MathUtils.lerp(rightPosX, leftPosX, normalizedScroll);
     } else {
       model.position.x = THREE.MathUtils.lerp(leftPosX, rightPosX, normalizedScroll);
     }
+
+    // **RGB を補間して背景色を変化**
+    const fromColor = sectionColors[currentSection];
+    const toColor = sectionColors[nextSection];
+
+    const r = Math.round(THREE.MathUtils.lerp(fromColor[0], toColor[0], normalizedScroll));
+    const g = Math.round(THREE.MathUtils.lerp(fromColor[1], toColor[1], normalizedScroll));
+    const b = Math.round(THREE.MathUtils.lerp(fromColor[2], toColor[2], normalizedScroll));
+
+    document.querySelector(".content").style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
     // レンダリング
     renderer.render(scene, camera);
