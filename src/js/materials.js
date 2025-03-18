@@ -4,7 +4,7 @@ export function getMaterials() {
   const textureLoader = new THREE.TextureLoader();
 
   // ストローのテクスチャ
-  const strawTexture = textureLoader.load("/models/straw/straw_bake.png", (texture) => {
+  const strawTexture = textureLoader.load("/models/creamSoda/straw_bake.png", (texture) => {
     texture.flipY = false;
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.wrapS = THREE.RepeatWrapping;
