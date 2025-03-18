@@ -17,11 +17,12 @@ export function setupAnimations(scene, camera, renderer, model) {
 
   // **背景色を変化させるセクションカラー**
   const sectionColors = [
-    [255, 183, 197], // Sakura
+    [255, 255, 255], // KeyVisual（白）
     [87, 200, 130],  // Melon
     [125, 60, 255],  // Grape
     [0, 170, 255],   // Blue Hawaii
-    [255, 183, 197], // Sakura（最後は最初の色とループ）
+    [255, 183, 197], // Sakura
+    [255, 255, 255]  // KeyVisual（ループ）
   ];
 
   // **モデルの初期角度とサイズを設定**
