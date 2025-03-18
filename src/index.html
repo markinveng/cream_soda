@@ -5,11 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bliss Cafe | クリームソーダ専門喫茶</title>
-  <meta name="description" content="Bliss Cafeは、懐かしくも新しいクリームソーダを楽しめる専門喫茶店。季節限定のフレーバーやレトロな雰囲気の店内で、あなただけの特別なひとときをお過ごしください。">
+  <meta name="description"
+    content="Bliss Cafeは、懐かしくも新しいクリームソーダを楽しめる専門喫茶店。季節限定のフレーバーやレトロな雰囲気の店内で、あなただけの特別なひとときをお過ごしください。">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <canvas class="webgl"></canvas>
+  <!-- ローディング画面 -->
+  <div id="loading-screen">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+  <!-- シーン -->
+  <section class="scene">
+    <canvas class="webgl"></canvas>
+  </section>
+  <!-- 各セクション -->
+  <section class="content">
+    <div class="keyVisual">
+      <div class="keyVisual_wrapper">
+        <h1 class="keyVisual_title">BlissCafe</h1>
+        <p class="keyVisual_text">Bliss Cafeでは<br>シックな雰囲気の店内で<br>カラフルなクリームソーダと共に<br>「至福のひと時」を過ごせます。</p>
+      </div>
+    </div>
+    <section class="melon">
+      <div class="melon_wrapper">
+        <span class="melon_furigana">甜瓜</span>
+        <h2 class="melon_title">Melon</h2>
+        <p class="melon_text">オーソドックスなのがお好きですか？</p>
+      </div>
+    </section>
+    <section class="grape">
+      <div class="grape_wrapper">
+        <span class="grape_furigana">葡萄</span>
+        <h2 class="grape_title">Grape</h2>
+        <p class="grape_text">宇宙のような美しさ</p>
+      </div>
+    </section>
+    <section class="blueHawaii">
+      <div class="blueHawaii_wrapper">
+        <span class="blueHawaii_furigana">碧洋</span>
+        <h2 class="blueHawaii_title">Blue Hawaii</h2>
+        <p class="blueHawaii_text">ハワイに行かなくても飲めます</p>
+      </div>
+    </section>
+    <section class="sakura">
+      <div class="sakura_wrapper">
+        <span class="sakura_furigana">桜</span>
+        <h2 class="sakura_title">Sakura</h2>
+        <p class="sakura_text">花のように劇しく</p>
+      </div>
+    </section>
+  </section>
   <script type="module" src="./main.js"></script>
 </body>
 

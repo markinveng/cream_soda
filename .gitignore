@@ -1,6 +1,10 @@
 # node
 node_modules/
 
+# css
+.sass-cache/
+style.css.map
+
 # ビルド成果物
 dist/
 build/

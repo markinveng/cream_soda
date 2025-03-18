@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden; }
+
+#loading-screen {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  z-index: 100;
+  transition: opacity 1s ease-in-out; }
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem; }
+
+.scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2; }
+  .scene .webgl {
+    width: 100%;
+    height: 100%;
+    display: block; }
+
+.content {
+  position: relative;
+  width: 100%;
+  z-index: 1; }
+  .content section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center; }
+    .content section:nth-child(odd) {
+      justify-content: flex-start; }
+    .content section:nth-child(even) {
+      justify-content: flex-end; }
+  .content .keyVisual {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../static/img/background.png");
+    background-position: center; }
+    .content .keyVisual_title {
+      font-size: 6rem; }
+    .content .keyVisual_text {
+      font-size: 2rem; }
+  .content .melon,
+  .content .grape,
+  .content .blueHawaii,
+  .content .sakura {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-right: 10%;
+    padding-left: 10%; }
+    .content .melon_wrapper,
+    .content .grape_wrapper,
+    .content .blueHawaii_wrapper,
+    .content .sakura_wrapper {
+      text-align: center; }
+    .content .melon_furigana,
+    .content .grape_furigana,
+    .content .blueHawaii_furigana,
+    .content .sakura_furigana {
+      font-size: 2rem; }
+    .content .melon_title,
+    .content .grape_title,
+    .content .blueHawaii_title,
+    .content .sakura_title {
+      font-size: 6rem; }
+    .content .melon_text,
+    .content .grape_text,
+    .content .blueHawaii_text,
+    .content .sakura_text {
+      font-size: 2rem; }
+  .content .melon {
+    background: #57c882; }
+  .content .grape {
+    background: #7d3cff; }
+  .content .blueHawaii {
+    background: #00aaff; }
+  .content .sakura {
+    background: #ffb7c5; }
+
+@media (max-width: 768px) {
+  .content section {
+    justify-content: center !important;
+    text-align: center;
+    padding: 5vh 2rem; } }
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+/*# sourceMappingURL=style.css.map */
