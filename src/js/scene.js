@@ -12,8 +12,8 @@ camera.position.set(0, 0.4, 4);
 scene.add(camera);
 
 // 修正: AxesHelperを使用
-const axesHelper = new THREE.AxesHelper(5); // 引数はヘルパーのサイズ
-scene.add(axesHelper);
+//const axesHelper = new THREE.AxesHelper(5); // 引数はヘルパーのサイズ
+//scene.add(axesHelper);
 
 // レンダラーの設定
 if (!canvas) {
