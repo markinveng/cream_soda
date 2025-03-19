@@ -85,10 +85,9 @@ body {
     align-items: center;
     padding-left: 10%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.7)), url("../static/img/background.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../static/img/background.png");
     background-position: center;
     &_wrapper {
-
     }
     &_title {
       font-size: 6rem;
@@ -123,18 +122,33 @@ body {
       font-size: 2rem;
     }
   }
-  // .melon {
-  //   background: rgb(87, 200, 130)
-  // }
-  // .grape {
-  //   background: rgb(125, 60, 255)
-  // }
-  // .blueHawaii {
-  //   background: rgb(0, 170, 255)
-  // }
-  // .sakura {
-  //   background: rgb(255, 183, 197);
-  // }
+}
+
+.footer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../static/img/background.png");
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-right: 10%;
+  padding-left: 10%;
+  &_title {
+    font-size: 2.5rem;
+  }
+  &_text {
+    font-size: 1.5rem;
+  }
+  &_info {
+    display: flex;
+    flex-direction:  column;
+    margin-top: 0.3rem;
+    & .-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
 }
 
 // **SP 用のスタイル**
@@ -150,6 +164,10 @@ body {
 
 // スピナーのアニメーション
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
