@@ -44,14 +44,23 @@ export function setupAnimations(scene, camera, renderer, model) {
     }
   });
 
-  // **モデルの初期角度とサイズを設定**
-  model.rotation.set(0.4, 0, 0);
-  model.scale.set(0.5, 0.5, 0.5);
-
   // **モデルの初期位置を `window.innerWidth * 0.0012` に戻す**
   const rightPosX = window.innerWidth * 0.0009; // **右側の中心**
   const leftPosX = -window.innerWidth * 0.0009; // **左側の中心**
-  model.position.set(rightPosX, -1.0, 0); // **初期位置を右側に固定**
+
+  // **デバイスの幅をチェック**
+  const isSP = window.innerWidth <= 768;
+  const isPC = window.innerWidth > 768;
+
+  // **モデルの初期角度とサイズを設定**
+  model.rotation.set(0.4, 0, 0);
+  if (isSP) {
+    model.position.set(-10, -1.1, 0);
+    model.scale.set(0.4, 0.4, 0.4);
+  } else {
+    model.scale.set(0.5, 0.5, 0.5);
+    model.position.set(rightPosX, -1.0, 0); // **初期位置を右側に固定**
+  }
 
   let rotationSpeed = 0.5; // **通常の回転速度**
   let lastCycleIndex = -1; // **前回のサイクルを記録（切り返し検知用）**
@@ -85,11 +94,16 @@ export function setupAnimations(scene, camera, renderer, model) {
 
     // **モデルの移動ロジック**
     let isSwitching = false;
-    if (currentSection % 2 === 0) {
-      model.position.x = THREE.MathUtils.lerp(rightPosX, leftPosX, normalizedScroll);
-      if (normalizedScroll >= 0.99 || normalizedScroll <= 0.01) isSwitching = true;
-    } else {
-      model.position.x = THREE.MathUtils.lerp(leftPosX, rightPosX, normalizedScroll);
+    if (isPC) {
+      if (currentSection % 2 === 0) {
+        model.position.x = THREE.MathUtils.lerp(rightPosX, leftPosX, normalizedScroll);
+        if (normalizedScroll >= 0.99 || normalizedScroll <= 0.01) isSwitching = true;
+      } else {
+        model.position.x = THREE.MathUtils.lerp(leftPosX, rightPosX, normalizedScroll);
+        if (normalizedScroll >= 0.99 || normalizedScroll <= 0.01) isSwitching = true;
+      }
+    } else if (isSP) {
+      model.position.x = 0;
       if (normalizedScroll >= 0.99 || normalizedScroll <= 0.01) isSwitching = true;
     }
 
@@ -143,7 +157,7 @@ export function setupAnimations(scene, camera, renderer, model) {
         if (sodaMaterial) {
           const newColor = sodaColors[4]; // **Sakura の色**
           sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack()
+          rotationSpeedUpAndBack();
         }
         //上スクロール(BlueHawaii → Grape)
       } else if (currentSection === 2 && scrollDirection === -1) {

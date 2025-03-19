@@ -145,10 +145,82 @@ body {
 }
 
 @media (max-width: 768px) {
+  .content .keyVisual {
+    padding-left: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: start;
+    padding-top: 4vh;
+  }
+  .content .keyVisual_title {
+    font-size: 4rem;
+  }
+  .content .keyVisual_text {
+    font-size: 1.4rem;
+  }
   .content section {
     justify-content: center !important;
     text-align: center;
+    align-items: start;
     padding: 5vh 2rem;
+  }
+  .content .melon,
+  .content .grape,
+  .content .blueHawaii,
+  .content .sakura {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  .content .melon_wrapper,
+  .content .grape_wrapper,
+  .content .blueHawaii_wrapper,
+  .content .sakura_wrapper {
+    text-align: center;
+  }
+  .content .melon_furigana,
+  .content .grape_furigana,
+  .content .blueHawaii_furigana,
+  .content .sakura_furigana {
+    font-size: 1.2rem;
+  }
+  .content .melon_title,
+  .content .grape_title,
+  .content .blueHawaii_title,
+  .content .sakura_title {
+    font-size: 3rem;
+  }
+  .content .melon_text,
+  .content .grape_text,
+  .content .blueHawaii_text,
+  .content .sakura_text {
+    text-align: left;
+    font-size: 1.4rem;
+    margin: 0 auto;
+  }
+  .footer {
+    display: flex;
+    align-items: start;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  .footer_title {
+    font-size: 1.8rem;
+  }
+  .footer_text {
+    font-size: 1rem;
+  }
+  .footer_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.1rem;
+  }
+  .footer_info .-title {
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 }
 @keyframes spin {

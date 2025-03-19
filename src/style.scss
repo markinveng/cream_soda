@@ -141,23 +141,84 @@ body {
   }
   &_info {
     display: flex;
-    flex-direction:  column;
+    flex-direction: column;
     margin-top: 0.3rem;
     & .-title {
       font-size: 1.2rem;
       font-weight: 700;
     }
   }
-
 }
 
 // **SP 用のスタイル**
 @media (max-width: 768px) {
   .content {
+    .keyVisual {
+      padding-left: 0;
+      text-align: center;
+      justify-content: center;
+      align-items: start;
+      padding-top: 4vh;
+      &_title {
+        font-size: 4rem;
+      }
+      &_text {
+        font-size: 1.4rem;
+      }
+    }
     section {
       justify-content: center !important;
       text-align: center;
+      align-items: start;
       padding: 5vh 2rem;
+    }
+    // 各セクションの個別スタイル
+    .melon,
+    .grape,
+    .blueHawaii,
+    .sakura {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: start;
+      padding-right: 10%;
+      padding-left: 10%;
+
+      &_wrapper {
+        text-align: center;
+      }
+      &_furigana {
+        font-size: 1.2rem;
+      }
+      &_title {
+        font-size: 3rem;
+      }
+      &_text {
+        text-align: left;
+        font-size: 1.4rem;
+        margin: 0 auto;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    align-items: start;
+    padding-right: 10%;
+    padding-left: 10%;
+    &_title {
+      font-size: 1.8rem;
+    }
+    &_text {
+      font-size: 1.0rem;
+    }
+    &_info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.1rem;
+      & .-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
     }
   }
 }
