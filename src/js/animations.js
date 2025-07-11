@@ -129,83 +129,86 @@ export function setupAnimations(scene, camera, renderer, model) {
 
     // **切り返しのタイミングを検出**
     if (isSwitching && lastCycleIndex !== currentSection) {
+      const sectionDiff = Math.abs(currentSection - lastCycleIndex);
       lastCycleIndex = currentSection;
-
-      //下スクロール(Keyvisual → Melon)
-      if (currentSection === 1 && scrollDirection === 1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[1]; // **Melon の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+      if (sectionDiff === 1 || sectionDiff === totalSections - 1) {
+        lastCycleIndex = currentSection;
+        //下スクロール(Keyvisual → Melon)
+        if (currentSection === 1 && scrollDirection === 1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[1]; // **Melon の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+          }
+          //下スクロール(Melon → Grape)
+        } else if (currentSection === 2 && scrollDirection === 1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[2]; // **Grape の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //下スクロール(Grape → BlueHawaii)
+        } else if (currentSection === 3 && scrollDirection === 1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[3]; // **BlueHawaii の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //下スクロール(BlueHawaii → Sakura)
+        } else if (currentSection === 4 && scrollDirection === 1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[4]; // **BlueHawaii の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //下スクロール(Sakura → Footer)
+        } else if (currentSection === 5 && scrollDirection === 1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[1]; // **Melon の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
         }
-        //下スクロール(Melon → Grape)
-      } else if (currentSection === 2 && scrollDirection === 1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[2]; // **Grape の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
+        // 上スクロール(Footer → Sakura)
+        else if (currentSection === 4 && scrollDirection === -1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[1]; // **Melon の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+          }
+          //上スクロール(Sakura → BlueHawaii)
+        } else if (currentSection === 3 && scrollDirection === -1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[4]; // **Sakura の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //上スクロール(BlueHawaii → Grape)
+        } else if (currentSection === 2 && scrollDirection === -1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[3]; // **BlueHawaii の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //上スクロール(Grape → Melon)
+        } else if (currentSection === 1 && scrollDirection === -1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[2]; // **Grape の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
+          //上スクロール(Melon → KeyVisual)
+        } else if (currentSection === 0 && scrollDirection === -1) {
+          if (sodaMaterial) {
+            const newColor = sodaColors[0]; // **Melon の色**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            rotationSpeedUpAndBack();
+          }
         }
-        //下スクロール(Grape → BlueHawaii)
-      } else if (currentSection === 3 && scrollDirection === 1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[3]; // **BlueHawaii の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-        //下スクロール(BlueHawaii → Sakura)
-      } else if (currentSection === 4 && scrollDirection === 1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[4]; // **BlueHawaii の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-        //下スクロール(Sakura → Footer)
-      } else if (currentSection === 5 && scrollDirection === 1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[1]; // **Melon の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-      }
-      // 上スクロール(Footer → Sakura)
-      else if (currentSection === 4 && scrollDirection === -1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[1]; // **Melon の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-        }
-        //上スクロール(Sakura → BlueHawaii)
-      } else if (currentSection === 3 && scrollDirection === -1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[4]; // **Sakura の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-        //上スクロール(BlueHawaii → Grape)
-      } else if (currentSection === 2 && scrollDirection === -1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[3]; // **BlueHawaii の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-        //上スクロール(Grape → Melon)
-      } else if (currentSection === 1 && scrollDirection === -1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[2]; // **Grape の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-        //上スクロール(Melon → KeyVisual)
-      } else if (currentSection === 0 && scrollDirection === -1) {
-        if (sodaMaterial) {
-          const newColor = sodaColors[0]; // **Melon の色**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
-          rotationSpeedUpAndBack();
-        }
-      }
-      // **通常の切り返し時に色変更**
-      else {
-        if (sodaMaterial) {
-          const newColor = sodaColors[currentSection]; // **現在のセクションの色を適用**
-          sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+        // **通常の切り返し時に色変更**
+        else {
+          if (sodaMaterial) {
+            const newColor = sodaColors[currentSection]; // **現在のセクションの色を適用**
+            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+          }
         }
       }
     }
