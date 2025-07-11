@@ -6,19 +6,24 @@ import gsap from "gsap";
  * @returns {Function} - 読み込み完了を通知する関数
  */
 export function setupLoading(onLoadComplete) {
-    const loadingScreen = document.getElementById("loading-screen");
-    let loadedAssets = 0;
-    const totalAssets = 1; // 例: 環境とモデルの合計
+  const loadingScreen = document.getElementById("loading-screen");
+  let loadedAssets = 0;
+  const totalAssets = 1;
 
-    function assetLoaded() {
-        loadedAssets++;
-        if (loadedAssets === totalAssets) {
-            gsap.to(loadingScreen, { opacity: 0, duration: 1, onComplete: () => {
-                loadingScreen.style.display = "none";
-                if (onLoadComplete) onLoadComplete();
-            }});
-        }
-    }
+  return assetLoaded;
+}
 
-    return assetLoaded;
+function assetLoaded() {
+  loadedAssets++;
+  if (loadedAssets === totalAssets) {
+    gsap.to(loadingScreen, {
+      opacity: 0,
+      duration: 1,
+      ease: "power1.inOut",
+      onComplete: () => {
+        loadingScreen.style.display = "none"; // フェードアウト完了後に非表示
+        if (onLoadComplete) onLoadComplete();
+      },
+    });
+  }
 }

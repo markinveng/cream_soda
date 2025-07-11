@@ -17,11 +17,11 @@ scene.add(camera);
 
 // レンダラーの設定
 if (!canvas) {
-    throw new Error("Canvas not found!");
+  throw new Error("Canvas not found!");
 }
 const renderer = new THREE.WebGLRenderer({
-    canvas,
-    alpha: true, // 透過を有効化
+  canvas,
+  alpha: true, // 透過を有効化
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -30,14 +30,14 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 // ウィンドウサイズ変更時の処理
 window.addEventListener("resize", () => {
-    const newWidth = window.innerWidth;
-    const newHeight = window.innerHeight;
+  const newWidth = window.innerWidth;
+  const newHeight = window.innerHeight;
 
-    camera.aspect = newWidth / newHeight;
-    camera.updateProjectionMatrix();
+  camera.aspect = newWidth / newHeight;
+  camera.updateProjectionMatrix();
 
-    renderer.setSize(newWidth, newHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(newWidth, newHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 export { scene, camera, renderer, canvas };
