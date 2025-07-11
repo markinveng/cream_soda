@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import gsap from "gsap";
 
 /**
  * シーンのアニメーションをセットアップ
@@ -67,10 +68,29 @@ export function setupAnimations(scene, camera, renderer, model) {
   let lastScrollY = window.scrollY || window.pageYOffset; // **前回のスクロール位置**
 
   function rotationSpeedUpAndBack() {
-    rotationSpeed = 30.0;
-    setTimeout(() => {
-      rotationSpeed = 0.5; // **0.5秒後に元の速度に戻す**
-    }, 500);
+    gsap.to(
+      { speed: rotationSpeed },
+      {
+        speed: 30.0,
+        duration: 0.5,
+        onUpdate: function () {
+          rotationSpeed = this.targets()[0].speed;
+        },
+        onComplete: () => {
+          // スピードダウンをフェードアウト
+          gsap.to(
+            { speed: rotationSpeed },
+            {
+              speed: 0.5,
+              duration: 0.5,
+              onUpdate: function () {
+                rotationSpeed = this.targets()[0].speed;
+              },
+            }
+          );
+        },
+      }
+    );
   }
 
   function tick() {

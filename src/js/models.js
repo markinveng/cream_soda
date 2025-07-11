@@ -18,14 +18,14 @@ export function loadModels(scene, onLoad) {
       if (mesh.name.includes("glass")) {
         mesh.material = materials.glassMaterial;
         mesh.material.transparent = true;
-        mesh.material.depthWrite = false; // **背後のオブジェクトを隠さない**
-        mesh.renderOrder = 0; // **ガラスを一番最後に描画**
+        mesh.material.depthWrite = false; // 背後のオブジェクトを隠さない
+        mesh.renderOrder = 0; // ガラスを一番最後に描画
       } 
       else if (mesh.name.includes("soda")) {
         mesh.material = materials.sodaMaterial;
         mesh.material.transparent = true;
         mesh.material.depthWrite = false;
-        mesh.renderOrder = 1; // **ガラスの前に描画**
+        mesh.renderOrder = 1; // ガラスの前に描画
       } 
       else if (mesh.name.includes("straw")) {
         mesh.material = materials.strawMaterial;
@@ -38,17 +38,17 @@ export function loadModels(scene, onLoad) {
         mesh.material.side = THREE.DoubleSide;
         mesh.material.transparent = true;
         mesh.material.depthWrite = false;
-        mesh.renderOrder = 2; // **液体の前に氷を描画**
+        mesh.renderOrder = 2; // 液体の前に氷を描画
       } 
       else if (mesh.name.includes("bubble")) {
         mesh.material = materials.bubbleMaterial;
         mesh.material.transparent = true;
         mesh.material.depthWrite = false;
-        mesh.renderOrder = 3; // **最初に泡を描画**
+        mesh.renderOrder = 3; // 最初に泡を描画
       }
     });
 
     scene.add(model);
-    if (onLoad) onLoad(model); // **修正: modelを渡す**
+    if (onLoad) onLoad(model);
   });
 }

@@ -20,5 +20,5 @@ export function setupLoading(onLoadComplete) {
         }
     }
 
-    return assetLoaded; // **ロード完了を通知する関数を返す**
+    return assetLoaded;
 }

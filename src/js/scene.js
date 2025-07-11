@@ -3,7 +3,7 @@ import * as THREE from "three";
 const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
-// **背景を透明にする**
+// 背景を透明にする
 scene.background = null;
 
 // カメラの設定
@@ -12,7 +12,7 @@ camera.position.set(0, 0.4, 4);
 scene.add(camera);
 
 // 修正: AxesHelperを使用
-//const axesHelper = new THREE.AxesHelper(5); // 引数はヘルパーのサイズ
+//const axesHelper = new THREE.AxesHelper(5);
 //scene.add(axesHelper);
 
 // レンダラーの設定
@@ -21,14 +21,14 @@ if (!canvas) {
 }
 const renderer = new THREE.WebGLRenderer({
     canvas,
-    alpha: true, // **透過を有効化**
+    alpha: true, // 透過を有効化
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// **ウィンドウサイズ変更時の処理**
+// ウィンドウサイズ変更時の処理
 window.addEventListener("resize", () => {
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
