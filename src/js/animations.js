@@ -207,7 +207,22 @@ export function setupAnimations(scene, camera, renderer, model) {
         else {
           if (sodaMaterial) {
             const newColor = sodaColors[currentSection]; // **現在のセクションの色を適用**
-            sodaMaterial.color.setRGB(newColor[0] / 255, newColor[1] / 255, newColor[2] / 255);
+            const [r, g, b] = newColor.map((value) => value / 255);
+
+            gsap.to(sodaMaterial.color, {
+              r: r,
+              g: g,
+              b: b,
+              duration: 1.0, // 色変更にかける時間（秒）
+              ease: "power1.inOut", // イージング
+              onUpdate: function () {
+                sodaMaterial.color.setRGB(this.targets()[0].r, this.targets()[0].g, this.targets()[0].b);
+              },
+              onComplete: function () {
+                // 完了時に最終的な色を明示的に設定
+                sodaMaterial.color.setRGB(r, g, b);
+              },
+            });
           }
         }
       }
